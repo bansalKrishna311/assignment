@@ -32,7 +32,7 @@ export default function RegistrationForm() {
         <Text style={{ textAlign: 'center', marginTop: 25, fontSize: 15 }}>Or login with</Text>
       </View>
       <View style={{ flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center', marginTop: 25 }}>
-        <Image style={styles.logo} source={{ uri: 'https://w7.pngwing.com/pngs/249/19/pngtransparent-google-logo-g-suite-google-guava-google-plus-company-text-logo.png' }} />
+        <Image style={styles.logo} source={{ uri: 'https://w7.pngwing.com/pngs/249/19/png-transparent-google-logo-g-suite-google-guava-google-plus-company-text-logo.png' }} />
         <Image style={styles.logo} source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWSzDnc0MUFbyQlB75CTxiUmVgc_sVw39l7w&s' }} />
         <Image style={styles.logo} source={{ uri: 'https://e7.pngegg.com/pngimages/708/311/png-clipart-twitter-twitter-thumbnail.png' }} />
       </View>
