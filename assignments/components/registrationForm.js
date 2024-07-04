@@ -4,12 +4,7 @@ import React from 'react';
 export default function RegistrationForm() {
   return (
     <View style={styles.container}>
-      <View style={{ alignItems: 'center' }}>
-        <Image
-          style={styles.image}
-          source={{ uri: 'https://img.freepik.com/free-vector/user-verificationunauthorized-access-prevention-private-account-authentication-cyber-security-peopleentering-login-password-safety-measures_335657-3530.jpg?t=st=1719638952~exp=1719642552~hmac=db8a1264da495bd86ef5981c57a9cd19751d0f868708612b21920c99f835c4f3&w=740' }}
-        />
-      </View>
+     
       <View style={{ marginTop: 10, flexDirection: 'column', gap: 15 }}>
         <Text style={styles.heading}>Login</Text>
         <TextInput
@@ -37,7 +32,7 @@ export default function RegistrationForm() {
         <Image style={styles.logo} source={{ uri: 'https://e7.pngegg.com/pngimages/708/311/png-clipart-twitter-twitter-thumbnail.png' }} />
       </View>
       <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 30, fontSize: 15 }}>
-        <Text style={{ color: "#000", fontWeight: 'bold' }}>New to the app? <Text style={{ color: "#f58d88" }}>Register</Text></Text>
+        <Text style={{ color: "#000", fontWeight: 'bold' }}>New to the app? <Text style={{ color: "#5DA3FA" }}>Register</Text></Text>
       </View>
     </View>
   );
@@ -57,7 +52,8 @@ const styles = StyleSheet.create({
   heading: {
     fontSize: 30,
     fontWeight: 'bold',
-    color: '#00796b',
+    textAlign: 'center',
+    marginTop: 20,
   },
   input: {
     height: 40,
@@ -72,7 +68,7 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 32,
     borderRadius: 30,
-    backgroundColor: '#f58d88',
+    backgroundColor: '#5DA3FA',
   },
   text: {
     fontSize: 16,
@@ -85,8 +81,7 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     resizeMode: 'contain',
-    borderWidth: 2,
-    borderColor: "#b4b3b3",
+ 
     paddingHorizontal: 40,
   }
 });
