@@ -1,45 +1,50 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View, Button } from 'react-native';
+import React, { useState } from 'react';
 
 export default function CounterApp() {
-    const [count, setCount] = useState(0);
-    const increment = () => {
-    setCount(count+1);
-    }
-    const decrement = () => {
+  const [count, setCount] = useState(0);
+
+  const increment = () => {
+    setCount(count + 1);
+  }
+
+  const decrement = () => {
     setCount(count - 1);
-    }
-    return (
+  }
+
+  return (
     <View style={styles.container}>
-    <Text style={styles.title}>Counter App</Text>
-    <Text style={styles.count}>{count}</Text>
-    <View style={styles.buttonContainer}>
-    <Button title="+" onPress={increment} color="#00796b" />
-    <Button title="-" onPress={decrement} color="#00796b" />
+      <Text style={styles.title}>Counter App</Text>
+      <Text style={styles.count}>{count}</Text>
+      <View style={styles.buttonContainer}>
+        <Button title="+" onPress={increment} color="#fcb535" />
+        <Button title="-" onPress={decrement} color="#fcb535" />
+      </View>
     </View>
-    </View>
-    );
-    }
-    const styles = StyleSheet.create({
-    container: {
-    flexDirection:'column',
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#e0f7fa',
-    },
-    title: {
+    backgroundColor: '#FFF3DE',
+  },
+  title: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
-    },
-    count: {fontSize: 48,
-        fontWeight: 'bold',
-        marginBottom: 20,
-        },
-        buttonContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        width: '40%',
-        },
-        });
-        
+    color: '#fcb535',
+  },
+  count: {
+    fontSize: 48,
+    fontWeight: 'bold',
+    marginBottom: 20,
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '40%',
+  },
+});
