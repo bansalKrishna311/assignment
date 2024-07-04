@@ -1,26 +1,50 @@
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, SafeAreaView, ScrollView } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  TouchableOpacity,
+  SafeAreaView,
+  ScrollView,
+} from 'react-native';
 import React from 'react';
 
 export default function OtpForm() {
   return (
     <SafeAreaView>
-        <ScrollView>
-        
-    <View style={styles.container}>
-      <Text style={styles.heading}>OTP Verification</Text>
-      <Text style={styles.instructionText}>Enter the OTP sent to your mobile number</Text>
-      <View style={styles.otpContainer}>
-        <TextInput style={styles.otpInput} keyboardType="numeric" maxLength={1} />
-        <TextInput style={styles.otpInput} keyboardType="numeric" maxLength={1} />
-        <TextInput style={styles.otpInput} keyboardType="numeric" maxLength={1} />
-        <TextInput style={styles.otpInput} keyboardType="numeric" maxLength={1} />
-      </View>
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Verify</Text>
-      </TouchableOpacity>
-    </View>
-        
-    </ScrollView>
+      <ScrollView>
+        <View style={styles.container}>
+          <Text style={styles.heading}>OTP Verification</Text>
+          <Text style={styles.instructionText}>
+            Enter the OTP sent to your mobile number
+          </Text>
+          <View style={styles.otpContainer}>
+            <TextInput
+              style={styles.otpInput}
+              keyboardType="numeric"
+              maxLength={1}
+            />
+            <TextInput
+              style={styles.otpInput}
+              keyboardType="numeric"
+              maxLength={1}
+            />
+            <TextInput
+              style={styles.otpInput}
+              keyboardType="numeric"
+              maxLength={1}
+            />
+            <TextInput
+              style={styles.otpInput}
+              keyboardType="numeric"
+              maxLength={1}
+            />
+          </View>
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.buttonText}>Verify</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -34,10 +58,10 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontSize: 30,
-        fontWeight: 'bold',
-        textAlign: 'center',
-        marginTop: 20,
-        color: '#fcb535',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginTop: 20,
+    color: '#fcb535',
   },
   instructionText: {
     fontSize: 18,
