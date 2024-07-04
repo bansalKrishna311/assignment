@@ -80,6 +80,6 @@ const styles = StyleSheet.create({
   resultText: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#004d40',
+    color: '#fcb535',
   },
 });

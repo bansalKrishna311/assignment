@@ -40,7 +40,7 @@ export default function BillingSystemApp() {
         value={qty}
         onChangeText={setQty}
       />
-      <Button title="Calculate" onPress={calculateBill} color="#00796b" />
+      <Button title="Calculate" onPress={calculateBill} color="#fcb535" />
       <View style={styles.resultContainer}>
         <Text style={styles.resultText}>Net Bill: Rs.{netBill}</Text>
         <Text style={styles.resultText}>Discount: 10%</Text>
@@ -55,18 +55,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 16,
-    backgroundColor: '#e0f7fa',
+    backgroundColor: '#FFF3DE',
     flex: 1, // Ensure the component takes full height
   },
   heading: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
-    color: '#00796b',
+    color: '#fcb535',
   },
   input: {
     height: 40,
-    borderColor: '#00796b',
+    borderColor: '#fcb535',
     borderWidth: 1,
     borderRadius: 10,
     marginBottom: 10,
@@ -81,6 +81,6 @@ const styles = StyleSheet.create({
   resultText: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#004d40',
+    color: '#fcb535',
   },
 });
