@@ -1,7 +1,7 @@
-import {StyleSheet, Text, View} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import React from 'react';
 
-export default function remote() {
+export default function RemoteAC() {
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>AC Remote</Text>
@@ -26,6 +26,7 @@ export default function remote() {
     </View>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
