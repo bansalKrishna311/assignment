@@ -8,6 +8,7 @@ export default function App() {
   <ScrollView>
     <View>
       <RegistrationForm/>
+      
     </View>
   </ScrollView>
 </SafeAreaView>
