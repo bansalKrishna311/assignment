@@ -30,17 +30,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
-    backgroundColor: '#e0f7fa',
+    backgroundColor: '#FFF3DE',
   },
   heading: {
     fontSize: 30,
         fontWeight: 'bold',
         textAlign: 'center',
         marginTop: 20,
+        color: '#fcb535',
   },
   instructionText: {
     fontSize: 18,
-    color: '#004d40',
+    color: '#0F351B',
     textAlign: 'center',
     marginBottom: 40,
   },
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
   otpInput: {
     height: 50,
     width: 50,
-    borderColor: '#00796b',
+    borderColor: '#0F351B',
     borderWidth: 1,
     borderRadius: 10,
     textAlign: 'center',
@@ -62,7 +63,7 @@ const styles = StyleSheet.create({
   },
   button: {
     marginTop: 20,
-    backgroundColor: '#00796b',
+    backgroundColor: '#fcb535',
     padding: 15,
     borderRadius: 10,
     alignItems: 'center',
