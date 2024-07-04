@@ -28,9 +28,9 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontSize: 30,
-    fontWeight: 'bold',
-    color: '#00796b',
-    marginBottom: 20,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        marginTop: 20,
   },
   instructionText: {
     fontSize: 18,

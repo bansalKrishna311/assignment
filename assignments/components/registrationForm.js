@@ -54,6 +54,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     marginTop: 20,
+    color: '#5DA3FA',
   },
   input: {
     height: 40,

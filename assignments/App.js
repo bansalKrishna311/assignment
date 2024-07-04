@@ -1,6 +1,7 @@
 import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import RegistrationForm from './components/registrationForm'
+import OtpForm from './components/otpForm'
 
 export default function App() {
   return (
@@ -8,11 +9,18 @@ export default function App() {
   <ScrollView>
     <View>
       <RegistrationForm/>
-      
+      <View style={styles.gapFirst}>
+
+      </View>
+      <OtpForm/>
     </View>
   </ScrollView>
 </SafeAreaView>
   )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  gapFirst:{
+    marginVertical: 210,
+  }
+})
