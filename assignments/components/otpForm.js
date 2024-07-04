@@ -1,8 +1,11 @@
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, SafeAreaView, ScrollView } from 'react-native';
 import React from 'react';
 
 export default function OtpForm() {
   return (
+    <SafeAreaView>
+        <ScrollView>
+        
     <View style={styles.container}>
       <Text style={styles.heading}>OTP Verification</Text>
       <Text style={styles.instructionText}>Enter the OTP sent to your mobile number</Text>
@@ -16,6 +19,9 @@ export default function OtpForm() {
         <Text style={styles.buttonText}>Verify</Text>
       </TouchableOpacity>
     </View>
+        
+    </ScrollView>
+    </SafeAreaView>
   );
 }
 
