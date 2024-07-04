@@ -33,7 +33,9 @@ export default function App() {
 
       </View>
       <CounterApp/>
-      
+      <View style={styles.gapFirst}>
+
+      </View>
 
     </View>
   </ScrollView>
