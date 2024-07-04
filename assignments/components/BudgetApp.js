@@ -33,7 +33,7 @@ export default function BudgetApp() {
         value={expense}
         onChangeText={setExpense}
       />
-      <Button title="Calculate" onPress={calculateBalance} color="#00796b" />
+      <Button title="Calculate" onPress={calculateBalance} color="#fcb535" />
       <View style={styles.resultContainer}>
         <Text style={styles.resultText}>Initial Budget: Rs.{budget}</Text>
         <Text
@@ -54,20 +54,20 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 16,
-    backgroundColor: '#e0f7fa',
+    backgroundColor: '#FFF3DE',
     flex: 1, // Ensure the component takes full height
   },
   heading: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
-    color: '#00796b',
+    color: '#fcb535',
   },
   input: {
     height: 40,
-    borderColor: '#00796b',
+    borderColor: '#fcb535',
     borderWidth: 1,
-    borderRadius: 10,
+    borderRadius: 20,
     marginBottom: 10,
     paddingHorizontal: 8,
     width: '80%',
