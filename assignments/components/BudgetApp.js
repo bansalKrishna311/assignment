@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 
-export default function BudgetSystem() {
+export default function BudgetApp() {
   const [budget] = useState(1200); // Initial budget, constant value
   const [income, setIncome] = useState('');
   const [expense, setExpense] = useState('');

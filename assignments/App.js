@@ -7,6 +7,7 @@ import MyCV from './components/MyCV'
 import Calculator from './components/Calculator'
 import CounterApp from './components/CounterApp'
 import SortingApp from './components/SortingApp'
+import BudgetApp from './components/BudgetApp'
 
 export default function App() {
   return (
@@ -38,6 +39,13 @@ export default function App() {
 
       </View>
        <SortingApp/>
+
+       <View style={styles.gapFirst}>
+
+</View>
+        <BudgetApp/>
+
+
     </View>
   </ScrollView>
 </SafeAreaView>
