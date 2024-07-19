@@ -1,65 +1,47 @@
-import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import RegistrationForm from './components/registrationForm'
-import OtpForm from './components/otpForm'
-import remoteAC from './components/remoteAC'
-import MyCV from './components/MyCV'
-import Calculator from './components/Calculator'
-import CounterApp from './components/CounterApp'
-import SortingApp from './components/SortingApp'
-import BudgetApp from './components/BudgetApp'
-import BillingSystemApp from './components/BillingSystemApp'
+import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
+import React from 'react';
+import RegistrationForm from './components/RegistrationForm';
+import OtpForm from './components/OtpForm';
+import MyCV from './components/MyCV';
+import Calculator from './components/Calculator';
+import CounterApp from './components/CounterApp';
+import SortingApp from './components/SortingApp';
+import BudgetApp from './components/BudgetApp';
+import BillingSystemApp from './components/BillingSystemApp';
 
 export default function App() {
   return (
-<SafeAreaView>
-  <ScrollView>
-    <View>
-      <RegistrationForm/>
-      <View style={styles.gapFirst}>
-
-      </View>
-      <OtpForm/>
-      <View style={styles.gapFirst}>
-
-      </View>
-      {/* <remoteAC/>
-      <View style={styles.gapFirst}>
-
-      </View> */}
-      <MyCV/>
-      <View style={styles.gapFirst}>
-
-      </View>
-      <Calculator/>
-      <View style={styles.gapFirst}>
-
-      </View>
-      <CounterApp/>
-      <View style={styles.gapFirst}>
-
-      </View>
-       <SortingApp/>
-
-       <View style={styles.gapFirst}>
-
-</View>
-        <BudgetApp/>
-        
-       <View style={styles.gapFirst}>
-
-</View>
-        <BillingSystemApp/>
-
-
-    </View>
-  </ScrollView>
-</SafeAreaView>
-  )
+    <SafeAreaView>
+      <ScrollView>
+        <View style={styles.container}>
+          <RegistrationForm />
+          <View style={styles.gap}></View>
+          <OtpForm />
+          <View style={styles.gap}></View>
+          <MyCV />
+          <View style={styles.gap}></View>
+          <Calculator />
+          <View style={styles.gap}></View>
+          <CounterApp />
+          <View style={styles.gap}></View>
+          <SortingApp />
+          <View style={styles.gap}></View>
+          <BudgetApp />
+          <View style={styles.gap}></View>
+          <BillingSystemApp />
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  );
 }
 
 const styles = StyleSheet.create({
-  gapFirst:{
-    marginVertical: 210,
-  }
-})
+  container: {
+    flex: 1,
+    padding: 20,
+    alignItems: 'center',
+  },
+  gap: {
+    marginVertical: 20, // Adjust as needed
+  },
+});
