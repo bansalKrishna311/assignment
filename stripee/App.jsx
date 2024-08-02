@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { View, Image, StyleSheet, Alert, ActivityIndicator, Text, TextInput, TouchableOpacity, Animated, KeyboardAvoidingView } from 'react-native';
 import { CardField, useStripe, StripeProvider } from '@stripe/stripe-react-native';
+import { Picker } from '@react-native-picker/picker';
+import LottieView from 'lottie-react-native';
 
 const PaymentScreen = () => {
   const { confirmPayment } = useStripe();
@@ -8,7 +10,11 @@ const PaymentScreen = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [amount, setAmount] = useState('');
-  const fadeAnim = new Animated.Value(0);
+  const [currency, setCurrency] = useState('USD');
+  const [email, setEmail] = useState('');
+  const [cardholderName, setCardholderName] = useState('');
+  const fadeAnim = useRef(new Animated.Value(0)).current;
+  const successAnim = useRef(null);
 
   const handlePayment = async () => {
     if (!cardDetails || !cardDetails.complete) {
@@ -22,13 +28,23 @@ const PaymentScreen = () => {
       return;
     }
 
+    if (!email) {
+      Alert.alert('Error', 'Please enter your email.');
+      return;
+    }
+
+    if (!cardholderName) {
+      Alert.alert('Error', 'Please enter the cardholder name.');
+      return;
+    }
+
     setLoading(true);
     setError(null);
 
     try {
       const billingDetails = {
-        email: 'bansalkrishna311@gmail.com',
-        name: 'Krishna Bansal',
+        email,
+        name: cardholderName,
       };
 
       const response = await fetch('http://192.168.0.173:3000/create-payment-intent', {
@@ -36,7 +52,7 @@ const PaymentScreen = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ amount: amountInCents }),
+        body: JSON.stringify({ amount: amountInCents, currency }),
       });
 
       if (!response.ok) {
@@ -60,6 +76,7 @@ const PaymentScreen = () => {
         console.log('Payment Successful', paymentIntent);
         Alert.alert('Success', 'Payment Successful');
         setAmount(''); // Clear the amount input after successful payment
+        successAnim.current.play();
       }
     } catch (error) {
       console.error('Payment Error', error);
@@ -88,12 +105,38 @@ const PaymentScreen = () => {
       </Animated.View>
       <TextInput
         style={styles.input}
-        placeholder="Enter amount"
-        keyboardType="numeric"
-        value={amount}
-        onChangeText={setAmount}
+        placeholder="Cardholder Name"
+        value={cardholderName}
+        onChangeText={setCardholderName}
         placeholderTextColor="#aaa"
       />
+      <TextInput
+        style={styles.input}
+        placeholder="Email"
+        keyboardType="email-address"
+        value={email}
+        onChangeText={setEmail}
+        placeholderTextColor="#aaa"
+      />
+      <View style={styles.amountCurrencyContainer}>
+        <TextInput
+          style={[styles.input, styles.amountInput]}
+          placeholder="Enter amount"
+          keyboardType="numeric"
+          value={amount}
+          onChangeText={setAmount}
+          placeholderTextColor="#aaa"
+        />
+        <Picker
+          selectedValue={currency}
+          style={styles.currencyPicker}
+          onValueChange={(itemValue) => setCurrency(itemValue)}
+        >
+          <Picker.Item label="USD" value="USD" />
+          <Picker.Item label="EUR" value="EUR" />
+          <Picker.Item label="INR" value="INR" />
+        </Picker>
+      </View>
       <CardField
         postalCodeEnabled={false}
         placeholder={{ number: '4242 4242 4242 4242' }}
@@ -109,6 +152,21 @@ const PaymentScreen = () => {
           <Text style={styles.buttonText}>Pay</Text>
         )}
       </TouchableOpacity>
+      <TouchableOpacity style={styles.cancelButton} onPress={() => {
+        setCardDetails(null);
+        setAmount('');
+        setError(null);
+        setEmail('');
+        setCardholderName('');
+      }}>
+        <Text style={styles.buttonText}>Cancel</Text>
+      </TouchableOpacity>
+      <LottieView
+        ref={successAnim}
+        source={require('./success.json')}
+        style={styles.successAnimation}
+        loop={false}
+      />
     </KeyboardAvoidingView>
   );
 };
@@ -158,6 +216,19 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     elevation: 3,
   },
+  amountCurrencyContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  amountInput: {
+    flex: 0.7,
+  },
+  currencyPicker: {
+    flex: 0.3,
+    height: 50,
+  },
   cardField: {
     height: 50,
     marginVertical: 30,
@@ -192,6 +263,24 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 18,
     fontWeight: 'bold',
+  },
+  cancelButton: {
+    backgroundColor: '#ff4d4d',
+    paddingVertical: 15,
+    borderRadius: 10,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 0.3,
+    shadowRadius: 10,
+    elevation: 5,
+    marginTop: 10,
+  },
+  successAnimation: {
+    width: 150,
+    height: 150,
+    alignSelf: 'center',
+    marginTop: 30,
   },
 });
 
