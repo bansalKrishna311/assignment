@@ -14,11 +14,11 @@ const PaymentScreen = () => {
 
     try {
       const billingDetails = {
-        email: 'customer@example.com',
-        name: 'Customer Name',
+        email: 'bansalkrishna311@gmail.com',
+        name: 'krishna bansal',
       };
 
-      const response = await fetch('http://192.168.122.1:3000/create-payment-intent', {
+      const response = await fetch('http://192.168.0.173:3000/create-payment-intent', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
