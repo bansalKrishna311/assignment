@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Image, StyleSheet, Alert, ActivityIndicator, Text, TextInput, TouchableOpacity, Animated } from 'react-native';
+import { View, Image, StyleSheet, Alert, ActivityIndicator, Text, TextInput, TouchableOpacity, Animated, KeyboardAvoidingView } from 'react-native';
 import { CardField, useStripe, StripeProvider } from '@stripe/stripe-react-native';
 
 const PaymentScreen = () => {
@@ -59,6 +59,7 @@ const PaymentScreen = () => {
       } else {
         console.log('Payment Successful', paymentIntent);
         Alert.alert('Success', 'Payment Successful');
+        setAmount(''); // Clear the amount input after successful payment
       }
     } catch (error) {
       console.error('Payment Error', error);
@@ -81,7 +82,7 @@ const PaymentScreen = () => {
   }, []);
 
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView behavior="padding" style={styles.container}>
       <Animated.View style={[styles.imageContainer, { opacity: fadeAnim }]}>
         <Image source={{ uri: 'https://www.visa.co.in/dam/VCOM/regional/ap/india/global-elements/images/in-visa-gold-card-498x280.png' }} style={styles.cardImage} />
       </Animated.View>
@@ -101,11 +102,14 @@ const PaymentScreen = () => {
         onCardChange={setCardDetails}
       />
       {error && <Text style={styles.errorText}>{error}</Text>}
-      <TouchableOpacity style={styles.button} onPress={handlePayment} disabled={loading}>
-        <Text style={styles.buttonText}>Pay</Text>
+      <TouchableOpacity style={[styles.button, loading && styles.buttonDisabled]} onPress={handlePayment} disabled={loading}>
+        {loading ? (
+          <ActivityIndicator size="small" color="#fff" />
+        ) : (
+          <Text style={styles.buttonText}>Pay</Text>
+        )}
       </TouchableOpacity>
-      {loading && <ActivityIndicator size="large" color="#0000ff" style={styles.loadingIndicator} />}
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -167,6 +171,7 @@ const styles = StyleSheet.create({
     color: 'red',
     textAlign: 'center',
     marginBottom: 10,
+    fontSize: 14,
   },
   button: {
     backgroundColor: '#6a1b9a',
@@ -180,13 +185,13 @@ const styles = StyleSheet.create({
     elevation: 5,
     marginTop: 20,
   },
+  buttonDisabled: {
+    backgroundColor: '#9b7cb6',
+  },
   buttonText: {
     color: '#fff',
     fontSize: 18,
     fontWeight: 'bold',
-  },
-  loadingIndicator: {
-    marginTop: 20,
   },
 });
 
