@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, View, Image, StyleSheet, Alert, ActivityIndicator, Text, TextInput } from 'react-native';
+import { View, Image, StyleSheet, Alert, ActivityIndicator, Text, TextInput, TouchableOpacity, Animated } from 'react-native';
 import { CardField, useStripe, StripeProvider } from '@stripe/stripe-react-native';
 
 const PaymentScreen = () => {
@@ -8,6 +8,7 @@ const PaymentScreen = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [amount, setAmount] = useState('');
+  const fadeAnim = new Animated.Value(0);
 
   const handlePayment = async () => {
     if (!cardDetails || !cardDetails.complete) {
@@ -67,15 +68,30 @@ const PaymentScreen = () => {
     }
   };
 
+  const startFadeIn = () => {
+    Animated.timing(fadeAnim, {
+      toValue: 1,
+      duration: 1000,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  React.useEffect(() => {
+    startFadeIn();
+  }, []);
+
   return (
     <View style={styles.container}>
-      <Image source={{ uri: 'https://www.visa.co.in/dam/VCOM/regional/ap/india/global-elements/images/in-visa-gold-card-498x280.png' }} style={styles.cardImage} />
+      <Animated.View style={[styles.imageContainer, { opacity: fadeAnim }]}>
+        <Image source={{ uri: 'https://www.visa.co.in/dam/VCOM/regional/ap/india/global-elements/images/in-visa-gold-card-498x280.png' }} style={styles.cardImage} />
+      </Animated.View>
       <TextInput
         style={styles.input}
         placeholder="Enter amount"
         keyboardType="numeric"
         value={amount}
         onChangeText={setAmount}
+        placeholderTextColor="#aaa"
       />
       <CardField
         postalCodeEnabled={false}
@@ -85,8 +101,10 @@ const PaymentScreen = () => {
         onCardChange={setCardDetails}
       />
       {error && <Text style={styles.errorText}>{error}</Text>}
-      <Button title="Pay" onPress={handlePayment} disabled={loading} />
-      {loading && <ActivityIndicator size="large" color="#0000ff" />}
+      <TouchableOpacity style={styles.button} onPress={handlePayment} disabled={loading}>
+        <Text style={styles.buttonText}>Pay</Text>
+      </TouchableOpacity>
+      {loading && <ActivityIndicator size="large" color="#0000ff" style={styles.loadingIndicator} />}
     </View>
   );
 };
@@ -104,20 +122,37 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     padding: 20,
+    backgroundColor: '#f5f7fa',
+  },
+  imageContainer: {
+    alignItems: 'center',
+    marginBottom: 20,
   },
   cardImage: {
-    width: 500,
+    width: '100%',
     height: 250,
     resizeMode: 'contain',
-    alignSelf: 'center',
-    marginBottom: 20,
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 0.2,
+    shadowRadius: 10,
+    elevation: 10,
   },
   input: {
-    height: 40,
-    borderColor: 'gray',
+    height: 50,
+    borderColor: '#ccc',
     borderWidth: 1,
+    borderRadius: 10,
     marginBottom: 20,
-    paddingHorizontal: 10,
+    paddingHorizontal: 15,
+    backgroundColor: '#fff',
+    fontSize: 16,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    elevation: 3,
   },
   cardField: {
     height: 50,
@@ -125,11 +160,33 @@ const styles = StyleSheet.create({
   },
   card: {
     backgroundColor: '#FFFFFF',
+    fontSize: 16,
+    borderRadius: 10,
   },
   errorText: {
     color: 'red',
     textAlign: 'center',
     marginBottom: 10,
+  },
+  button: {
+    backgroundColor: '#6a1b9a',
+    paddingVertical: 15,
+    borderRadius: 10,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 0.3,
+    shadowRadius: 10,
+    elevation: 5,
+    marginTop: 20,
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  loadingIndicator: {
+    marginTop: 20,
   },
 });
 
