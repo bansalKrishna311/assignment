@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "941962253662",
+    "project_id": "reactnative-a22cf",
+    "storage_bucket": "reactnative-a22cf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:941962253662:android:956f043d95686f92e5abcf",
+        "android_client_info": {
+          "package_name": "com.gmailicons"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "941962253662-dlfpkdtnq1r4kh1s4hi216occortiu3i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gmailicons",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "941962253662-e0kir51se45pmvktqnvhr05pr0ik95f1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5wbbYcaoBcUR8OVCuWLB7a3wmT9LUD_E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "941962253662-e0kir51se45pmvktqnvhr05pr0ik95f1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
